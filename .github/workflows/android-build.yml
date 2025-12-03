@@ -1,4 +1,5 @@
-name: Build Capacitor Android APK
+name: Android Build
+
 on:
 push:
 branches:
@@ -8,20 +9,18 @@ workflow_dispatch:
 jobs:
 build-android:
 runs-on: ubuntu-latest
+
 steps:
-- name: Checkout repo
-uses: actions/checkout@v3
+  - name: Checkout repo
+    uses: actions/checkout@v3
 
   - name: Set up Node.js
     uses: actions/setup-node@v3
     with:
-      node-version: 20
+      node-version: '20'
 
-  - name: Install dependencies
-    run: npm ci
-
-  - name: Install Capacitor Android
-    run: npm install @capacitor/core @capacitor/cli @capacitor/android --save
+  - name: Install npm dependencies
+    run: npm install
 
   - name: Download Google Drive ZIP
     run: |
@@ -31,10 +30,16 @@ uses: actions/checkout@v3
   - name: Extract web assets
     run: unzip -o neoclip2-build.zip -d www
 
+  - name: Install Capacitor CLI
+    run: npm install @capacitor/cli @capacitor/android --save
+
+  - name: Initialize Capacitor Android
+    run: npx cap add android || echo "Android project already exists"
+
   - name: Copy web assets to Android
     run: npx cap copy android
 
-  - name: Build APK
+  - name: Build Android APK
     run: |
       cd android
       ./gradlew assembleDebug
@@ -42,5 +47,5 @@ uses: actions/checkout@v3
   - name: Upload APK
     uses: actions/upload-artifact@v3
     with:
-      name: neoclip2-debug-apk
+      name: app-debug-apk
       path: android/app/build/outputs/apk/debug/app-debug.apk

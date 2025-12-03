@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>NeoClip AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#00FFFF', // Electric Cyan
+              secondary: '#BF00FF', // Hyper Violet
+              dark: '#050505', // Deep Space Black
+              darker: '#000000',
+              surface: '#121212',
+              retroRed: '#FF0000',
+              retroBlue: '#0000FF',
+              retroYellow: '#FFDE00'
+            },
+            animation: {
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'spin-slow': 'spin 4s linear infinite',
+              'scan': 'scan 3s linear infinite',
+              'orbit': 'orbit 4s linear infinite',
+              'float': 'float 6s ease-in-out infinite',
+              'marquee': 'marquee 15s linear infinite',
+            },
+            keyframes: {
+              scan: {
+                '0%': { transform: 'translateY(-100%)' },
+                '100%': { transform: 'translateY(400%)' }
+              },
+              orbit: {
+                '0%': { transform: 'rotate(0deg) translateX(50px) rotate(0deg)' },
+                '100%': { transform: 'rotate(360deg) translateX(50px) rotate(-360deg)' }
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' }
+              },
+              marquee: {
+                '0%': { transform: 'translateX(100%)' },
+                '100%': { transform: 'translateX(-100%)' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Hide scrollbar for mobile-app feel */
+      ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+      }
+      body {
+        -webkit-tap-highlight-color: transparent;
+        background-color: #050505;
+        color: white;
+      }
+      /* Pixel font simulation for gaming feel */
+      .font-pixel {
+        font-family: 'Courier New', Courier, monospace;
+        letter-spacing: -0.5px;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

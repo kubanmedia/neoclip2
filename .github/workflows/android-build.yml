@@ -42,5 +42,4 @@ uses: actions/checkout@v3
   - name: Upload APK
     uses: actions/upload-artifact@v3
     with:
-      name: neoclip2-debug-apk
-      path: android/app/build/outputs/apk/debug/app-debug.apk
+      name:
